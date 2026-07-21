@@ -7,6 +7,63 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class ActivitySchema extends BaseModel {
+  static $columns = ['campaignContactId', 'description', 'id', 'performedAt', 'performedBy', 'type'] as const
+  $columns = ActivitySchema.$columns
+  @column()
+  declare campaignContactId: number
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime()
+  declare performedAt: DateTime
+  @column()
+  declare performedBy: number | null
+  @column()
+  declare type: string
+}
+
+export class AttachmentSchema extends BaseModel {
+  static $columns = ['activityId', 'id', 'mimeType', 'name', 'size', 'url'] as const
+  $columns = AttachmentSchema.$columns
+  @column()
+  declare activityId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare mimeType: string | null
+  @column()
+  declare name: string
+  @column()
+  declare size: number | null
+  @column()
+  declare url: string
+}
+
+export class AuditLogSchema extends BaseModel {
+  static $columns = ['action', 'companyId', 'createdAt', 'entity', 'entityId', 'id', 'newValue', 'oldValue', 'userId'] as const
+  $columns = AuditLogSchema.$columns
+  @column()
+  declare action: string
+  @column()
+  declare companyId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare entity: string
+  @column()
+  declare entityId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare newValue: string | null
+  @column()
+  declare oldValue: string | null
+  @column()
+  declare userId: number | null
+}
+
 export class AuthAccessTokenSchema extends BaseModel {
   static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
   $columns = AuthAccessTokenSchema.$columns
@@ -32,19 +89,480 @@ export class AuthAccessTokenSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class AutomationActionSchema extends BaseModel {
+  static $columns = ['automationId', 'configuration', 'id', 'type'] as const
+  $columns = AutomationActionSchema.$columns
+  @column()
+  declare automationId: number
+  @column()
+  declare configuration: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare type: string
+}
+
+export class AutomationTriggerSchema extends BaseModel {
+  static $columns = ['automationId', 'id', 'type'] as const
+  $columns = AutomationTriggerSchema.$columns
+  @column()
+  declare automationId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare type: string
+}
+
+export class AutomationSchema extends BaseModel {
+  static $columns = ['companyId', 'enabled', 'id', 'name'] as const
+  $columns = AutomationSchema.$columns
+  @column()
+  declare companyId: number
+  @column()
+  declare enabled: boolean
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+}
+
+export class CallSchema extends BaseModel {
+  static $columns = ['activityId', 'direction', 'duration', 'id', 'recordingUrl', 'result', 'summary', 'transcript'] as const
+  $columns = CallSchema.$columns
+  @column()
+  declare activityId: number
+  @column()
+  declare direction: string
+  @column()
+  declare duration: number | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare recordingUrl: string | null
+  @column()
+  declare result: string
+  @column()
+  declare summary: string | null
+  @column()
+  declare transcript: string | null
+}
+
+export class CampaignAssignmentRuleSchema extends BaseModel {
+  static $columns = ['campaignId', 'id', 'maxContacts', 'priority', 'strategy'] as const
+  $columns = CampaignAssignmentRuleSchema.$columns
+  @column()
+  declare campaignId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare maxContacts: number | null
+  @column()
+  declare priority: number
+  @column()
+  declare strategy: string
+}
+
+export class CampaignContactSchema extends BaseModel {
+  static $columns = ['assignedUserId', 'attempts', 'campaignId', 'contactId', 'createdAt', 'id', 'lastInteraction', 'nextInteraction', 'priority', 'score', 'status'] as const
+  $columns = CampaignContactSchema.$columns
+  @column()
+  declare assignedUserId: number | null
+  @column()
+  declare attempts: number
+  @column()
+  declare campaignId: number
+  @column()
+  declare contactId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime()
+  declare lastInteraction: DateTime | null
+  @column.dateTime()
+  declare nextInteraction: DateTime | null
+  @column()
+  declare priority: number
+  @column()
+  declare score: number | null
+  @column()
+  declare status: string
+}
+
+export class CampaignListSchema extends BaseModel {
+  static $columns = ['campaignId', 'listId'] as const
+  $columns = CampaignListSchema.$columns
+  @column({ isPrimary: true })
+  declare campaignId: number
+  @column()
+  declare listId: number
+}
+
+export class CampaignTeamSchema extends BaseModel {
+  static $columns = ['campaignId', 'teamId'] as const
+  $columns = CampaignTeamSchema.$columns
+  @column({ isPrimary: true })
+  declare campaignId: number
+  @column()
+  declare teamId: number
+}
+
+export class CampaignSchema extends BaseModel {
+  static $columns = ['companyId', 'createdAt', 'createdBy', 'description', 'endDate', 'id', 'name', 'script', 'startDate', 'status', 'type'] as const
+  $columns = CampaignSchema.$columns
+  @column()
+  declare companyId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare createdBy: number | null
+  @column()
+  declare description: string | null
+  @column.dateTime()
+  declare endDate: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column()
+  declare script: string | null
+  @column.dateTime()
+  declare startDate: DateTime | null
+  @column()
+  declare status: string
+  @column()
+  declare type: string
+}
+
+export class CompanySchema extends BaseModel {
+  static $columns = ['createdAt', 'email', 'id', 'name', 'phone', 'status', 'taxId', 'timezone'] as const
+  $columns = CompanySchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare email: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column()
+  declare phone: string | null
+  @column()
+  declare status: string
+  @column()
+  declare taxId: string | null
+  @column()
+  declare timezone: string
+}
+
+export class ContactListItemSchema extends BaseModel {
+  static $columns = ['contactId', 'listId'] as const
+  $columns = ContactListItemSchema.$columns
+  @column()
+  declare contactId: number
+  @column({ isPrimary: true })
+  declare listId: number
+}
+
+export class ContactListSchema extends BaseModel {
+  static $columns = ['companyId', 'createdAt', 'createdBy', 'description', 'id', 'name'] as const
+  $columns = ContactListSchema.$columns
+  @column()
+  declare companyId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare createdBy: number | null
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+}
+
+export class ContactTagRelationSchema extends BaseModel {
+  static $columns = ['contactId', 'tagId'] as const
+  $columns = ContactTagRelationSchema.$columns
+  @column({ isPrimary: true })
+  declare contactId: number
+  @column()
+  declare tagId: number
+}
+
+export class ContactSchema extends BaseModel {
+  static $columns = ['address', 'city', 'companyId', 'companyName', 'country', 'createdAt', 'email', 'firstName', 'id', 'jobTitle', 'lastName', 'mobile', 'notes', 'phone', 'province', 'status', 'updatedAt', 'website'] as const
+  $columns = ContactSchema.$columns
+  @column()
+  declare address: string | null
+  @column()
+  declare city: string | null
+  @column()
+  declare companyId: number
+  @column()
+  declare companyName: string | null
+  @column()
+  declare country: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare email: string | null
+  @column()
+  declare firstName: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare jobTitle: string | null
+  @column()
+  declare lastName: string
+  @column()
+  declare mobile: string | null
+  @column()
+  declare notes: string | null
+  @column()
+  declare phone: string | null
+  @column()
+  declare province: string | null
+  @column()
+  declare status: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare website: string | null
+}
+
+export class CustomFieldSchema extends BaseModel {
+  static $columns = ['companyId', 'id', 'name', 'type'] as const
+  $columns = CustomFieldSchema.$columns
+  @column()
+  declare companyId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column()
+  declare type: string
+}
+
+export class CustomValueSchema extends BaseModel {
+  static $columns = ['contactId', 'fieldId', 'value'] as const
+  $columns = CustomValueSchema.$columns
+  @column({ isPrimary: true })
+  declare contactId: number
+  @column()
+  declare fieldId: number
+  @column()
+  declare value: string | null
+}
+
+export class EmailMessageSchema extends BaseModel {
+  static $columns = ['activityId', 'body', 'clicked', 'id', 'opened', 'status', 'subject'] as const
+  $columns = EmailMessageSchema.$columns
+  @column()
+  declare activityId: number
+  @column()
+  declare body: string | null
+  @column()
+  declare clicked: boolean
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare opened: boolean
+  @column()
+  declare status: string
+  @column()
+  declare subject: string
+}
+
+export class NoteSchema extends BaseModel {
+  static $columns = ['campaignContactId', 'createdAt', 'id', 'text', 'userId'] as const
+  $columns = NoteSchema.$columns
+  @column()
+  declare campaignContactId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare text: string
+  @column()
+  declare userId: number | null
+}
+
+export class OpportunitySchema extends BaseModel {
+  static $columns = ['amount', 'assignedUserId', 'contactId', 'expectedCloseDate', 'id', 'pipelineId', 'probability', 'stageId', 'status', 'title'] as const
+  $columns = OpportunitySchema.$columns
+  @column()
+  declare amount: string | null
+  @column()
+  declare assignedUserId: number | null
+  @column()
+  declare contactId: number
+  @column.dateTime()
+  declare expectedCloseDate: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare pipelineId: number
+  @column()
+  declare probability: number | null
+  @column()
+  declare stageId: number
+  @column()
+  declare status: string
+  @column()
+  declare title: string
+}
+
+export class PipelineStageSchema extends BaseModel {
+  static $columns = ['color', 'id', 'name', 'pipelineId', 'position'] as const
+  $columns = PipelineStageSchema.$columns
+  @column()
+  declare color: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+  @column()
+  declare pipelineId: number
+  @column()
+  declare position: number
+}
+
+export class PipelineSchema extends BaseModel {
+  static $columns = ['companyId', 'id', 'name'] as const
+  $columns = PipelineSchema.$columns
+  @column()
+  declare companyId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+}
+
+export class TagSchema extends BaseModel {
+  static $columns = ['color', 'companyId', 'id', 'name'] as const
+  $columns = TagSchema.$columns
+  @column()
+  declare color: string | null
+  @column()
+  declare companyId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare name: string
+}
+
+export class TaskSchema extends BaseModel {
+  static $columns = ['assignedUserId', 'campaignContactId', 'description', 'dueDate', 'id', 'priority', 'status', 'title'] as const
+  $columns = TaskSchema.$columns
+  @column()
+  declare assignedUserId: number | null
+  @column()
+  declare campaignContactId: number
+  @column()
+  declare description: string | null
+  @column.dateTime()
+  declare dueDate: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare priority: string
+  @column()
+  declare status: string
+  @column()
+  declare title: string
+}
+
+export class TeamMemberSchema extends BaseModel {
+  static $columns = ['teamId', 'userId'] as const
+  $columns = TeamMemberSchema.$columns
+  @column({ isPrimary: true })
+  declare teamId: number
+  @column()
+  declare userId: number
+}
+
+export class TeamSchema extends BaseModel {
+  static $columns = ['companyId', 'description', 'id', 'leaderId', 'name'] as const
+  $columns = TeamSchema.$columns
+  @column()
+  declare companyId: number
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare leaderId: number | null
+  @column()
+  declare name: string
+}
+
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
+  static $columns = ['companyId', 'createdAt', 'email', 'firstName', 'id', 'lastLogin', 'lastName', 'passwordHash', 'role', 'status'] as const
   $columns = UserSchema.$columns
+  @column()
+  declare companyId: number | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
   @column()
   declare email: string
   @column()
-  declare fullName: string | null
+  declare firstName: string
   @column({ isPrimary: true })
   declare id: number
-  @column({ serializeAs: null })
-  declare password: string
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null
+  @column.dateTime()
+  declare lastLogin: DateTime | null
+  @column()
+  declare lastName: string
+  @column()
+  declare passwordHash: string
+  @column()
+  declare role: string
+  @column()
+  declare status: string
+}
+
+export class WhatsAppConversationSchema extends BaseModel {
+  static $columns = ['campaignContactId', 'id', 'phone', 'startedAt', 'status'] as const
+  $columns = WhatsAppConversationSchema.$columns
+  @column()
+  declare campaignContactId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare phone: string
+  @column.dateTime()
+  declare startedAt: DateTime
+  @column()
+  declare status: string
+}
+
+export class WhatsAppMessageSchema extends BaseModel {
+  static $columns = ['conversationId', 'deliveredAt', 'direction', 'id', 'mediaUrl', 'messageType', 'metaMessageId', 'readAt', 'sentAt', 'status', 'templateName', 'text'] as const
+  $columns = WhatsAppMessageSchema.$columns
+  @column()
+  declare conversationId: number
+  @column.dateTime()
+  declare deliveredAt: DateTime | null
+  @column()
+  declare direction: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare mediaUrl: string | null
+  @column()
+  declare messageType: string | null
+  @column()
+  declare metaMessageId: string | null
+  @column.dateTime()
+  declare readAt: DateTime | null
+  @column.dateTime()
+  declare sentAt: DateTime | null
+  @column()
+  declare status: string
+  @column()
+  declare templateName: string | null
+  @column()
+  declare text: string | null
 }

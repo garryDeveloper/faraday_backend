@@ -1,25 +1,25 @@
 1. Organización
-Company (Tenant)
-id
-name
-taxId
-email
-phone
-timezone
-status
-createdAt
+   Company (Tenant)
+   id
+   name
+   taxId
+   email
+   phone
+   timezone
+   status
+   createdAt
 
 Una empresa cliente del sistema.
 
 Relaciones
 
 Company
-    ├── Users
-    ├── Teams
-    ├── Contacts
-    ├── Lists
-    ├── Campaigns
-    └── Pipelines
+├── Users
+├── Teams
+├── Contacts
+├── Lists
+├── Campaigns
+└── Pipelines
 User
 id
 companyId
@@ -52,7 +52,7 @@ userId
 Muchos vendedores pueden pertenecer a varios equipos.
 
 2. CRM
-Contact
+   Contact
 
 Esta es la entidad principal.
 
@@ -117,8 +117,7 @@ type
 ContactCustomValue
 contactId
 fieldId
-value
-3. Listas
+value 3. Listas
 ContactList
 id
 companyId
@@ -137,9 +136,9 @@ contactId
 Muchos a muchos.
 
 4. Campañas
-Campaign
-id
-companyId
+   Campaign
+   id
+   companyId
 
 name
 
@@ -196,8 +195,7 @@ Round Robin
 
 Balanceado
 
-Shared Queue
-5. Participación del contacto
+Shared Queue 5. Participación del contacto
 
 Esta probablemente sea la tabla más importante del sistema.
 
@@ -242,8 +240,7 @@ Ganado
 
 Perdido
 
-No volver a llamar
-6. Actividades
+No volver a llamar 6. Actividades
 
 Aquí vive todo el historial.
 
@@ -274,8 +271,7 @@ Meeting
 
 Task
 
-Note
-7. Llamadas
+Note 7. Llamadas
 Call
 id
 
@@ -303,8 +299,7 @@ No Answer
 
 Voicemail
 
-Failed
-8. WhatsApp
+Failed 8. WhatsApp
 WhatsAppConversation
 id
 
@@ -338,8 +333,7 @@ sentAt
 
 deliveredAt
 
-readAt
-9. Email
+readAt 9. Email
 EmailMessage
 id
 
@@ -353,8 +347,7 @@ status
 
 opened
 
-clicked
-10. Tareas
+clicked 10. Tareas
 Task
 id
 
@@ -370,8 +363,7 @@ dueDate
 
 status
 
-priority
-11. Notas
+priority 11. Notas
 Note
 id
 
@@ -381,8 +373,7 @@ userId
 
 text
 
-createdAt
-12. Oportunidades
+createdAt 12. Oportunidades
 
 Si el lead avanza.
 
@@ -435,8 +426,7 @@ Propuesta
 
 Negociación
 
-Ganado
-13. Automatizaciones
+Ganado 13. Automatizaciones
 
 Muy interesante para un portfolio.
 
@@ -481,8 +471,7 @@ Asignar vendedor
 
 Enviar Email
 
-Mover Pipeline
-14. Auditoría
+Mover Pipeline 14. Auditoría
 AuditLog
 id
 
@@ -500,8 +489,7 @@ oldValue
 
 newValue
 
-createdAt
-15. Archivos
+createdAt 15. Archivos
 Attachment
 id
 
@@ -518,27 +506,27 @@ Relaciones
 Company
 │
 ├── Users
-│      └── Teams
+│ └── Teams
 │
 ├── Contacts
-│      ├── Tags
-│      ├── CustomFields
-│      └── Lists
+│ ├── Tags
+│ ├── CustomFields
+│ └── Lists
 │
 ├── Campaigns
-│      ├── Lists
-│      ├── Teams
-│      ├── AssignmentRules
-│      └── CampaignContacts
-│               │
-│               ├── Activities
-│               │      ├── Calls
-│               │      ├── WhatsApp
-│               │      ├── Emails
-│               │      ├── Notes
-│               │      └── Tasks
-│               │
-│               └── Opportunity
+│ ├── Lists
+│ ├── Teams
+│ ├── AssignmentRules
+│ └── CampaignContacts
+│ │
+│ ├── Activities
+│ │ ├── Calls
+│ │ ├── WhatsApp
+│ │ ├── Emails
+│ │ ├── Notes
+│ │ └── Tasks
+│ │
+│ └── Opportunity
 │
 ├── Pipelines
 │
