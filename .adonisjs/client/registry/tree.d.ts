@@ -18,4 +18,15 @@ export interface ApiDefinition {
       destroy: typeof routes['profile.access_tokens.destroy']
     }
   }
+  admin: {
+    companies: {
+      companies: {
+        index: typeof routes['admin.companies.companies.index']
+        store: typeof routes['admin.companies.companies.store']
+        show: typeof routes['admin.companies.companies.show']
+        update: typeof routes['admin.companies.companies.update']
+        destroy: typeof routes['admin.companies.companies.destroy']
+      }
+    }
+  }
 }

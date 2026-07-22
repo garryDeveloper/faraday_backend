@@ -34,5 +34,18 @@ router
       .prefix('account')
       .as('profile')
       .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('companies', [controllers.Companies, 'index'])
+        router.post('companies', [controllers.Companies, 'store'])
+        router.get('companies/:id', [controllers.Companies, 'show'])
+        router.put('companies/:id', [controllers.Companies, 'update'])
+        router.delete('companies/:id', [controllers.Companies, 'destroy'])
+      })
+      .prefix('admin')
+      .as('admin.companies')
+      .use(middleware.auth())
+      .use(middleware.admin())
   })
   .prefix('/api/v1')

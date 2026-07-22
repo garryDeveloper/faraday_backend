@@ -55,4 +55,64 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/access_tokens_controller').default['destroy']>>>
     }
   }
+  'admin.companies.companies.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/api/v1/admin/companies'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['index']>>>
+    }
+  }
+  'admin.companies.companies.store': {
+    methods: ["POST"]
+    pattern: '/api/v1/admin/companies'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/company').createCompanyValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/company').createCompanyValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'admin.companies.companies.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/api/v1/admin/companies/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['show']>>>
+    }
+  }
+  'admin.companies.companies.update': {
+    methods: ["PUT"]
+    pattern: '/api/v1/admin/companies/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/company').updateCompanyValidator)>>
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/company').updateCompanyValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'admin.companies.companies.destroy': {
+    methods: ["DELETE"]
+    pattern: '/api/v1/admin/companies/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/companies_controller').default['destroy']>>>
+    }
+  }
 }
