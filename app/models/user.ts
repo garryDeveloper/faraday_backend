@@ -8,7 +8,10 @@ import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import Company from './company.js'
 import Team from './team.js'
 
-export default class User extends compose(UserSchema, withAuthFinder(hash)) {
+export default class User extends compose(
+  UserSchema,
+  withAuthFinder(hash, { uids: ['email'], passwordColumnName: 'passwordHash' })
+) {
   static accessTokens = DbAccessTokensProvider.forModel(User)
   declare currentAccessToken?: AccessToken
 
@@ -18,6 +21,9 @@ export default class User extends compose(UserSchema, withAuthFinder(hash)) {
   @hasMany(() => Team, { foreignKey: 'leaderId' })
   declare ledTeams: HasMany<typeof Team>
 
+  /**
+   * User initials from first and last name
+   */
   get initials() {
     const [first, last] = `${this.firstName} ${this.lastName}`.split(' ')
     if (first && last) {

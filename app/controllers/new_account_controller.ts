@@ -4,6 +4,13 @@ import type { HttpContext } from '@adonisjs/core/http'
 import UserTransformer from '#transformers/user_transformer'
 
 export default class NewAccountController {
+  /**
+   * @store
+   * @description Register a new user account
+   * @tags Auth
+   * @requestBody {"firstName":"John","lastName":"Doe","email":"john@example.com","password":"secret1234","passwordConfirmation":"secret1234"}
+   * @responseBody 201 - <User> with token
+   */
   async store({ request, serialize }: HttpContext) {
     const { firstName, lastName, email, password } = await request.validateUsing(signupValidator)
 
