@@ -25,3 +25,28 @@ export const loginValidator = vine.create({
   email: email(),
   password: vine.string(),
 })
+
+/**
+ * Validator for admin/supervisor to create new users
+ */
+export const createUserValidator = vine.create({
+  firstName: vine.string().trim().maxLength(255),
+  lastName: vine.string().trim().maxLength(255),
+  email: email().unique({ table: 'users', column: 'email' }),
+  password: password(),
+  role: vine.string().trim().maxLength(50),
+  companyId: vine.number().withoutDecimals(),
+})
+
+/**
+ * Validator for updating users
+ */
+export const updateUserValidator = vine.create({
+  firstName: vine.string().trim().maxLength(255).optional(),
+  lastName: vine.string().trim().maxLength(255).optional(),
+  email: email().optional(),
+  password: password().optional(),
+  role: vine.string().trim().maxLength(50).optional(),
+  status: vine.string().trim().maxLength(50).optional(),
+  companyId: vine.number().withoutDecimals().optional(),
+})

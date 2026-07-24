@@ -5,7 +5,7 @@ export default class ProfileController {
   /**
    * @show
    * @description Get authenticated user profile
-   * @tags Account
+   * @tags Auth
    * @responseBody 200 - <User>
    * @responseBody 401 - Unauthorized
    */
