@@ -38,4 +38,14 @@ export interface ApiDefinition {
       destroy: typeof routes['users.users.destroy']
     }
   }
+  contacts: {
+    contacts: {
+      index: typeof routes['contacts.contacts.index']
+      store: typeof routes['contacts.contacts.store']
+      import: typeof routes['contacts.contacts.import']
+      show: typeof routes['contacts.contacts.show']
+      update: typeof routes['contacts.contacts.update']
+      destroy: typeof routes['contacts.contacts.destroy']
+    }
+  }
 }

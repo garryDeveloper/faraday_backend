@@ -90,6 +90,42 @@ const routes = {
     tokens: [{"old":"/api/v1/users/:id","type":0,"val":"api","end":""},{"old":"/api/v1/users/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/users/:id","type":0,"val":"users","end":""},{"old":"/api/v1/users/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['users.users.destroy']['types'],
   },
+  'contacts.contacts.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/v1/contacts',
+    tokens: [{"old":"/api/v1/contacts","type":0,"val":"api","end":""},{"old":"/api/v1/contacts","type":0,"val":"v1","end":""},{"old":"/api/v1/contacts","type":0,"val":"contacts","end":""}],
+    types: placeholder as Registry['contacts.contacts.index']['types'],
+  },
+  'contacts.contacts.store': {
+    methods: ["POST"],
+    pattern: '/api/v1/contacts',
+    tokens: [{"old":"/api/v1/contacts","type":0,"val":"api","end":""},{"old":"/api/v1/contacts","type":0,"val":"v1","end":""},{"old":"/api/v1/contacts","type":0,"val":"contacts","end":""}],
+    types: placeholder as Registry['contacts.contacts.store']['types'],
+  },
+  'contacts.contacts.import': {
+    methods: ["POST"],
+    pattern: '/api/v1/contacts/import',
+    tokens: [{"old":"/api/v1/contacts/import","type":0,"val":"api","end":""},{"old":"/api/v1/contacts/import","type":0,"val":"v1","end":""},{"old":"/api/v1/contacts/import","type":0,"val":"contacts","end":""},{"old":"/api/v1/contacts/import","type":0,"val":"import","end":""}],
+    types: placeholder as Registry['contacts.contacts.import']['types'],
+  },
+  'contacts.contacts.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/api/v1/contacts/:id',
+    tokens: [{"old":"/api/v1/contacts/:id","type":0,"val":"api","end":""},{"old":"/api/v1/contacts/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/contacts/:id","type":0,"val":"contacts","end":""},{"old":"/api/v1/contacts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['contacts.contacts.show']['types'],
+  },
+  'contacts.contacts.update': {
+    methods: ["PUT"],
+    pattern: '/api/v1/contacts/:id',
+    tokens: [{"old":"/api/v1/contacts/:id","type":0,"val":"api","end":""},{"old":"/api/v1/contacts/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/contacts/:id","type":0,"val":"contacts","end":""},{"old":"/api/v1/contacts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['contacts.contacts.update']['types'],
+  },
+  'contacts.contacts.destroy': {
+    methods: ["DELETE"],
+    pattern: '/api/v1/contacts/:id',
+    tokens: [{"old":"/api/v1/contacts/:id","type":0,"val":"api","end":""},{"old":"/api/v1/contacts/:id","type":0,"val":"v1","end":""},{"old":"/api/v1/contacts/:id","type":0,"val":"contacts","end":""},{"old":"/api/v1/contacts/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['contacts.contacts.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

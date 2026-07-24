@@ -18,6 +18,12 @@ export type ScannedRoutes = {
     'users.users.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'users.users.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'users.users.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.index': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.store': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.import': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   GET: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
@@ -25,6 +31,8 @@ export type ScannedRoutes = {
     'admin.companies.companies.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'users.users.index': { paramsTuple?: []; params?: {} }
     'users.users.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.index': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   HEAD: {
     'profile.profile.show': { paramsTuple?: []; params?: {} }
@@ -32,6 +40,8 @@ export type ScannedRoutes = {
     'admin.companies.companies.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'users.users.index': { paramsTuple?: []; params?: {} }
     'users.users.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.index': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   POST: {
     'auth.new_account.store': { paramsTuple?: []; params?: {} }
@@ -39,14 +49,18 @@ export type ScannedRoutes = {
     'profile.access_tokens.destroy': { paramsTuple?: []; params?: {} }
     'admin.companies.companies.store': { paramsTuple?: []; params?: {} }
     'users.users.store': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.store': { paramsTuple?: []; params?: {} }
+    'contacts.contacts.import': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'admin.companies.companies.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'users.users.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'admin.companies.companies.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'users.users.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'contacts.contacts.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

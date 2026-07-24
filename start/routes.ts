@@ -59,5 +59,18 @@ router
       .prefix('users')
       .as('users')
       .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('', [controllers.Contacts, 'index'])
+        router.post('', [controllers.Contacts, 'store'])
+        router.post('import', [controllers.Contacts, 'import'])
+        router.get('/:id', [controllers.Contacts, 'show'])
+        router.put('/:id', [controllers.Contacts, 'update'])
+        router.delete('/:id', [controllers.Contacts, 'destroy'])
+      })
+      .prefix('contacts')
+      .as('contacts')
+      .use(middleware.auth())
   })
   .prefix('/api/v1')
