@@ -5,9 +5,14 @@
 
 export const controllers = {
   AccessTokens: () => import('#controllers/access_tokens_controller'),
+  Campaigns: () => import('#controllers/campaigns_controller'),
   Companies: () => import('#controllers/companies_controller'),
+  ContactLists: () => import('#controllers/contact_lists_controller'),
   Contacts: () => import('#controllers/contacts_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Profile: () => import('#controllers/profile_controller'),
+  Tasks: () => import('#controllers/tasks_controller'),
+  Teams: () => import('#controllers/teams_controller'),
   Users: () => import('#controllers/users_controller'),
+  WhatsApp: () => import('#controllers/whats_app_controller'),
 }

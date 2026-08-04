@@ -189,6 +189,21 @@ export class CampaignContactSchema extends BaseModel {
   declare status: string
 }
 
+export class CampaignDistributionSchema extends BaseModel {
+  static $columns = ['campaignId', 'contactListId', 'distributionType', 'id', 'teamId'] as const
+  $columns = CampaignDistributionSchema.$columns
+  @column()
+  declare campaignId: number
+  @column()
+  declare contactListId: number
+  @column()
+  declare distributionType: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare teamId: number
+}
+
 export class CampaignListSchema extends BaseModel {
   static $columns = ['campaignId', 'listId'] as const
   $columns = CampaignListSchema.$columns

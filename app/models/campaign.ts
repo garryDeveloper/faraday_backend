@@ -9,6 +9,7 @@ import CampaignList from './campaign_list.js'
 import CampaignTeam from './campaign_team.js'
 import CampaignAssignmentRule from './campaign_assignment_rule.js'
 import CampaignContact from './campaign_contact.js'
+import CampaignDistribution from './campaign_distribution.js'
 
 export default class Campaign extends CampaignSchema {
   @belongsTo(() => Company)
@@ -28,6 +29,9 @@ export default class Campaign extends CampaignSchema {
 
   @hasMany(() => CampaignContact)
   declare campaignContacts: HasMany<typeof CampaignContact>
+
+  @hasMany(() => CampaignDistribution)
+  declare distributions: HasMany<typeof CampaignDistribution>
 
   @manyToMany(() => ContactList, {
     pivotTable: 'campaign_lists',

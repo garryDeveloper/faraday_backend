@@ -16,6 +16,7 @@ export default class AccessTokensController {
     const { email, password } = await request.validateUsing(loginValidator)
 
     const user = await User.verifyCredentials(email, password)
+    await user.load('company')
     const token = await User.accessTokens.create(user)
 
     return serialize({

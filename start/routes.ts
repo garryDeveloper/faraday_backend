@@ -72,5 +72,90 @@ router
       .prefix('contacts')
       .as('contacts')
       .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('', [controllers.ContactLists, 'index'])
+        router.post('', [controllers.ContactLists, 'store'])
+        router.get('/:id', [controllers.ContactLists, 'show'])
+        router.put('/:id', [controllers.ContactLists, 'update'])
+        router.delete('/:id', [controllers.ContactLists, 'destroy'])
+        router.post('/:id/contacts', [controllers.ContactLists, 'attachContacts'])
+        router.delete('/:id/contacts/:contactId', [controllers.ContactLists, 'detachContact'])
+      })
+      .prefix('contact-lists')
+      .as('contactLists')
+      .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('', [controllers.Campaigns, 'index'])
+        router.post('', [controllers.Campaigns, 'store'])
+        router.get('contact-statuses', [controllers.Campaigns, 'statuses'])
+        router.get('/:id', [controllers.Campaigns, 'show'])
+        router.put('/:id', [controllers.Campaigns, 'update'])
+        router.delete('/:id', [controllers.Campaigns, 'destroy'])
+        router.get('/:id/contacts', [controllers.Campaigns, 'contacts'])
+        router.get('/:id/contacts/:contactId/status', [controllers.Campaigns, 'contactStatus'])
+        router.put('/:id/contacts/:contactId/status', [
+          controllers.Campaigns,
+          'updateContactStatus',
+        ])
+        router.get('/:id/contacts/:contactId/notes', [controllers.Campaigns, 'notes'])
+        router.post('/:id/contacts/:contactId/notes', [controllers.Campaigns, 'storeNote'])
+        router.put('/:id/contacts/:contactId/notes/:noteId', [controllers.Campaigns, 'updateNote'])
+        router.delete('/:id/contacts/:contactId/notes/:noteId', [
+          controllers.Campaigns,
+          'destroyNote',
+        ])
+      })
+      .prefix('campaigns')
+      .as('campaigns')
+      .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('', [controllers.Teams, 'index'])
+        router.post('', [controllers.Teams, 'store'])
+        router.get('/:id', [controllers.Teams, 'show'])
+        router.put('/:id', [controllers.Teams, 'update'])
+        router.delete('/:id', [controllers.Teams, 'destroy'])
+        router.post('/:id/users', [controllers.Teams, 'assignUsers'])
+        router.delete('/:id/users/:userId', [controllers.Teams, 'detachUser'])
+      })
+      .prefix('teams')
+      .as('teams')
+      .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('', [controllers.Tasks, 'index'])
+        router.post('', [controllers.Tasks, 'store'])
+        router.get('/:id', [controllers.Tasks, 'show'])
+        router.put('/:id', [controllers.Tasks, 'update'])
+        router.delete('/:id', [controllers.Tasks, 'destroy'])
+      })
+      .prefix('tasks')
+      .as('tasks')
+      .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.get('webhook', [controllers.WhatsApp, 'webhookVerify'])
+        router.post('webhook', [controllers.WhatsApp, 'webhookReceive'])
+      })
+      .prefix('whatsapp')
+      .as('whatsapp.webhook')
+
+    router
+      .group(() => {
+        router.get('templates', [controllers.WhatsApp, 'templates'])
+        router.post('send', [controllers.WhatsApp, 'send'])
+        router.post('send-template', [controllers.WhatsApp, 'sendTemplate'])
+        router.get('messages', [controllers.WhatsApp, 'messages'])
+      })
+      .prefix('whatsapp')
+      .as('whatsapp')
+      .use(middleware.auth())
   })
   .prefix('/api/v1')

@@ -5,18 +5,38 @@
 
 /// <reference path="./manifest.d.ts" />
 import type { InferData, InferVariants } from '@adonisjs/core/types/transformers'
+import type CampaignTransformer from '#transformers/campaign_transformer'
 import type CompanyTransformer from '#transformers/company_transformer'
+import type ContactListTransformer from '#transformers/contact_list_transformer'
 import type ContactTransformer from '#transformers/contact_transformer'
+import type TaskTransformer from '#transformers/task_transformer'
+import type TeamTransformer from '#transformers/team_transformer'
 import type UserTransformer from '#transformers/user_transformer'
 
 export namespace Data {
+  export type Campaign = InferData<CampaignTransformer>
+  export namespace Campaign {
+    export type Variants = InferVariants<CampaignTransformer>
+  }
   export type Company = InferData<CompanyTransformer>
   export namespace Company {
     export type Variants = InferVariants<CompanyTransformer>
   }
+  export type ContactList = InferData<ContactListTransformer>
+  export namespace ContactList {
+    export type Variants = InferVariants<ContactListTransformer>
+  }
   export type Contact = InferData<ContactTransformer>
   export namespace Contact {
     export type Variants = InferVariants<ContactTransformer>
+  }
+  export type Task = InferData<TaskTransformer>
+  export namespace Task {
+    export type Variants = InferVariants<TaskTransformer>
+  }
+  export type Team = InferData<TeamTransformer>
+  export namespace Team {
+    export type Variants = InferVariants<TeamTransformer>
   }
   export type User = InferData<UserTransformer>
   export namespace User {

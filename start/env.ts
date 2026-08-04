@@ -31,4 +31,11 @@ export default await Env.create(new URL('../', import.meta.url), {
   DB_USER: Env.schema.string(),
   DB_PASSWORD: Env.schema.string.optional(),
   DB_DATABASE: Env.schema.string(),
+
+  // WhatsApp
+  WHATSAPP_API_VERSION: Env.schema.string.optional(),
+  WHATSAPP_PHONE_NUMBER_ID: Env.schema.string(),
+  WHATSAPP_ACCESS_TOKEN: Env.schema.string(),
+  WHATSAPP_API_BASE_URL: Env.schema.string.optional(),
+  WHATSAPP_WEBHOOK_VERIFY_TOKEN: Env.schema.string.optional(),
 })
